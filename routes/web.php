@@ -29,7 +29,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => 'admin'], function() {
+Route::group(['middleware'], function () {
     /* Data Master (User) */
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::post('/user/store', [UserController::class, 'store']);
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/barang/{id}/update', [BarangController::class, 'update']);
     Route::get('/barang/{id}/destroy', [BarangController::class, 'destroy']);
 
-     /* Data Laporan */
+    /* Data Laporan */
     Route::get('/lap_barang_masuk', [LaporanController::class, 'lap_barang_masuk'])->name('lap_barang_masuk');
     Route::get('/lap_barang_masuk/cetak_barang_masuk', [LaporanController::class, 'cetak_barang_masuk']);
 
@@ -58,27 +58,16 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/lap_barang', [LaporanController::class, 'lap_barang'])->name('lap_barang');
     Route::get('/lap_barang/cetak_barang', [LaporanController::class, 'cetak_barang']);
 
-     /* Data Barang (Barang Masuk) */
-    Route::get('/brg_masuk1', [BrgMasukController::class, 'index'])->name('brg_masuk1');
-    
-     /* Data Barang (Barang Keluar) */
-    Route::get('/brg_keluar1', [BrgKeluarController::class, 'index'])->name('brg_keluar1');
-    
-});
-
-Route::group(['middleware' => 'user'], function() {
-    /* Data Barang (Barang Masuk) */
     Route::get('/brg_masuk', [BrgMasukController::class, 'index'])->name('brg_masuk');
     Route::get('/brg_masuk/ajax', [BrgMasukController::class, 'ajax']);
     Route::get('/brg_masuk/create', [BrgMasukController::class, 'create']);
     Route::post('/brg_masuk/store', [BrgMasukController::class, 'store']);
-});
-Route::group(['middleware' => 'teknisi'], function() {
-    /* Data Barang (Barang Keluar) */
+
     Route::get('/brg_keluar', [BrgKeluarController::class, 'index'])->name('brg_keluar');
     Route::get('/brg_keluar/ajax', [BrgKeluarController::class, 'ajax']);
     Route::get('/brg_keluar/create', [BrgKeluarController::class, 'create']);
     Route::post('/brg_keluar/store', [BrgKeluarController::class, 'store']);
+
 });
 
 

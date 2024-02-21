@@ -25,17 +25,17 @@
                     <table style="width: 100%;">
                         <tr>
                             <td align="center">
-                                <h2><img src="{{ URL::to('assets/logo/itn.png') }}" width="80px" height="80px" alt="Logo" style="position:absolute; left: 70px"> <b style="color:red;">Indonesia Trans Network</b>
+                                <h2> <b style="color:red;">Anugerah konveksi/garment</b>
                                 </h2>
                                 <span style="line-height: 1.6; font-weight: bold;">
-                                    Jl. Kimaja(Kimaja Icon), samping Jaya Bakery, 10m sebelum fly over Tanjung Senang, Bandar Lampung
+                                    Jalan raya Daan Mogot pergudangan era prima, blok D7 Kota Tangerang
                                 </span>
                             </td>
                         </tr>
                     </table>
                     <hr class="line-title">
                     <p align="center">
-                        LAPORAN DATA BARANG MASUK
+                        LAPORAN DATA TRANSAKSI MASUK
                     </p>
                     </hr>
                     <table class="table table-bordered">

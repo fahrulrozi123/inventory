@@ -185,13 +185,13 @@
 						<li class="nav-item">
 							<a class="collapse show" href="{{route('brg_masuk')}}">
 								<i class="fas fa-briefcase"></i>
-								<p>Barang Masuk</p>
+								<p>Transaksi Masuk</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="collapse show" href="{{route('brg_keluar')}}">
 								<i class="fas fa-briefcase"></i>
-								<p>Barang Keluar</p>
+								<p>Transaksi Keluar</p>
 							</a>
 						</li>
 						<li class="nav-item">
@@ -209,12 +209,12 @@
 									</li>
 									<li>
 										<a href="{{route('lap_barang_masuk')}}">
-											<span class="sub-item">Laporan Barang Masuk</span>
+											<span class="sub-item">Laporan Transaksi Masuk</span>
 										</a>
 									</li>
 									<li>
 										<a href="{{route('lap_barang_keluar')}}">
-											<span class="sub-item">Laporan Barang Keluar</span>
+											<span class="sub-item">Laporan Transaksi Keluar</span>
 										</a>
 									</li>
 								</ul>
@@ -222,6 +222,7 @@
 						</li>
 						@endif
 						@if (auth()->user()->level==2)
+
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#laporan">
 								<i class="fas fa-file"></i>

@@ -14,6 +14,7 @@ class BrgMasuk extends Model
         'id_barang',
         'tgl_masuk',
         'jml_barang_masuk',
+        's_stok',
         'created_at',
         'updated_at',
     ];

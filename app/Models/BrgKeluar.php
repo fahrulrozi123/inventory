@@ -15,6 +15,7 @@ class BrgKeluar extends Model
         'id_user',
         'tgl_keluar',
         'jml_barang_keluar',
+        's_stok',
         'created_at',
         'updated_at',
     ];

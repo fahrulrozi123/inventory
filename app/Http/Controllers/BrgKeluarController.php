@@ -20,22 +20,22 @@ class BrgKeluarController extends Controller
 
     public function index()
     {
-        $brg_keluar     = BrgKeluar::join('barang', 'barang.id', '=', 'brg_keluar.id_barang')->join('users', 'users.id', '=', 'brg_keluar.id_user')
+        $brg_keluar = BrgKeluar::join('barang', 'barang.id', '=', 'brg_keluar.id_barang')->join('users', 'users.id', '=', 'brg_keluar.id_user')
             ->select('brg_keluar.*', 'barang.satuan', 'barang.deskripsi', 'barang.nama_barang', 'barang.satuan', 'users.name')
             ->get();
-        $barang   = Barang::all();
+        $barang = Barang::all();
         return view('user.brg_keluar.v_brgkeluar', compact('brg_keluar', 'barang'));
     }
     public function create()
     {
-        $barang   = Barang::all();
+        $barang = Barang::all();
 
         $q = DB::table('brg_keluar')->select(DB::raw('MAX(RIGHT(no_brg_keluar,4)) as kode'));
         $kd = "";
         if ($q->count() > 0) {
             foreach ($q->get() as $k) {
-                $tmp = ((int)$k->kode) + 1;
-                $kd  = sprintf("%04s", $tmp);
+                $tmp = ((int) $k->kode) + 1;
+                $kd = sprintf("%04s", $tmp);
             }
         } else {
             $kd = "0001";
@@ -46,7 +46,7 @@ class BrgKeluarController extends Controller
     public function ajax(Request $request)
     {
         $id_barang['id_barang'] = $request->id_barang;
-        $ajax_barang            = Barang::where('id', $id_barang)->get();
+        $ajax_barang = Barang::where('id', $id_barang)->get();
 
         return view('user.brg_keluar.ajax', compact('ajax_barang'));
     }
@@ -59,15 +59,16 @@ class BrgKeluarController extends Controller
             return redirect('/brg_keluar')->with('error', 'Jumlah Barang Melebihi Stok');
         } else {
             BrgKeluar::create([
-                'no_brg_keluar'      => $request->no_brg_keluar,
-                'id_barang'         => $request->id_barang,
-                'id_user'            => auth()->id(),
-                'tgl_keluar'         => $request->tgl_keluar,
-                'jml_barang_keluar'  => $request->jml_barang_keluar,
-                'created_at'        => date('Y-m-d H:i:s'),
-                'updated_at'        => date('Y-m-d H:i:s'),
+                'no_brg_keluar' => $request->no_brg_keluar,
+                'id_barang' => $request->id_barang,
+                'id_user' => auth()->id(),
+                'tgl_keluar' => $request->tgl_keluar,
+                'jml_barang_keluar' => $request->jml_barang_keluar,
+                's_stok' => $request->s_stok,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]);
-            $barang->stok    -= $request->jml_barang_keluar;
+            $barang->stok -= $request->jml_barang_keluar;
             $barang->save();
 
             // Alert::success('Ditambah','Data Berhasil Ditambah');

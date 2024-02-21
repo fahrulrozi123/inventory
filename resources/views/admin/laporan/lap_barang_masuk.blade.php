@@ -5,7 +5,7 @@
 	<div class="content">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Laporan Data Barang Masuk</h4>
+				<h4 class="page-title">Laporan Data Transaksi Masuk</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="#">
@@ -22,7 +22,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Laporan Barang Masuk</a>
+						<a href="#">Laporan Transaksi Masuk</a>
 					</li>
 				</ul>
 			</div>
@@ -66,9 +66,9 @@
 											<td>{{$no++}}</td>
 											<td>{{$data->no_brg_masuk}}</td>
 											<td>{{$data->nama_barang}}</td>
-											<td>{{$data->satuan}}</td>
+											<td>{{$data->satuan}} {{$data->s_satuan}}</td>
 											<td>{{date('d F Y', strtotime($data->tgl_masuk))}}</td>
-											<td>{{$data->jml_barang_masuk}} Unit</td>
+											<td>{{$data->jml_barang_masuk}} {{$data->s_stok}}</td>
 										</tr>
 										@endforeach
 

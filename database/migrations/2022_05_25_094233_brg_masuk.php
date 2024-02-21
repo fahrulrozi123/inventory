@@ -19,6 +19,7 @@ class BrgMasuk extends Migration
             $table->integer('id_barang');
             $table->string('tgl_masuk');
             $table->integer('jml_barang_masuk')->nullable();
+            $table->string('s_stok')->nullable();
             $table->timestamps();
         });
     }

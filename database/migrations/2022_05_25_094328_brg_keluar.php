@@ -17,8 +17,10 @@ class BrgKeluar extends Migration
             $table->id();
             $table->string('no_brg_keluar');
             $table->integer('id_barang');
+            $table->integer('id_user');
             $table->string('tgl_keluar');
             $table->integer('jml_barang_keluar')->nullable();
+            $table->STRING('S_STOK')->nullable();
             $table->timestamps();
         });
     }

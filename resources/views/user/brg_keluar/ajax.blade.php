@@ -5,6 +5,6 @@
 
 <div class="form-group">
     <label>Satuan</label>
-    <input type="text" class="form-control" id="kategori" value="{{ $d->satuan }}" readonly required>
+    <input type="text" class="form-control" id="kategori" value="{{ $d->satuan }} {{ $d->s_satuan }}" readonly required>
 </div>
 @endforeach

@@ -65,8 +65,8 @@
 											<td>{{$no++}}</td>
 											<td>{{$data->nama_barang}}</td>
 											<td>{{$data->deskripsi}}</td>
-											<td>{{$data->stok}} Unit</td>
-											<td>{{$data->satuan}}</td>
+											<td>{{$data->stok}} {{$data->s_stok}}</td>
+											<td>{{$data->satuan}} {{$data->s_satuan}}</td>
 										</tr>
 										@endforeach
 

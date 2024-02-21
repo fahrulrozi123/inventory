@@ -5,7 +5,7 @@
 	<div class="content">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Data Barang Masuk</h4>
+				<h4 class="page-title">Data Transaksi Masuk</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="/home">
@@ -16,7 +16,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Barang Masuk</a>
+						<a href="#">Transaksi Masuk</a>
 					</li>
 				</ul>
 			</div>
@@ -28,7 +28,7 @@
 						<div class="card-header">
 							<div class="d-flex align-items-center">
 								<h4 class="card-title">Tambah Data</h4>
-								@if (auth()->user()->level==2)
+								@if (auth()->user()->level==1)
 								<a class="btn btn-primary btn-round ml-auto" href="/brg_masuk/create">
 									<i class="fa fa-plus"></i>
 									Tambah Data
@@ -62,9 +62,9 @@
 											<td>{{$no++}}</td>
 											<td>{{$data->no_brg_masuk}}</td>
 											<td>{{$data->nama_barang}}</td>
-											<td>{{$data->satuan}}</td>
+											<td>{{$data->satuan}} {{$data->s_satuan}}</td>
 											<td>{{date('d F Y', strtotime($data->tgl_masuk))}}</td>
-											<td>{{$data->jml_barang_masuk}} Unit</td>
+											<td>{{$data->jml_barang_masuk}} {{$data->s_stok}}</td>
 										</tr>
 										@endforeach
 

@@ -5,7 +5,7 @@
 	<div class="content">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Add Barang Keluar</h4>
+				<h4 class="page-title">Add Transaksi Keluar</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="#">
@@ -22,7 +22,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Barang Keluar</a>
+						<a href="#">Transaksi Keluar</a>
 					</li>
 				</ul>
 			</div>
@@ -37,7 +37,8 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label>No Barang Keluar</label>
-									<input type="text" class="form-control" placeholder="No Barang Keluar ..." readonly="" value="{{ 'NBK-'.$kd }}" name="no_brg_keluar" required>
+									<input type="text" class="form-control" placeholder="No Barang Keluar ..."
+										readonly="" value="{{ 'NBK-'.$kd }}" name="no_brg_keluar" required>
 								</div>
 
 								<div class="form-group">
@@ -50,19 +51,29 @@
 									<select class="form-control" name="id_barang" id="id_barang" required>
 										<option value="" hidden="">-- Pilih Barang --</option>
 										@foreach ($barang as $b)
+										@if($b->stok != 0)
 										<option value="{{ $b->id }}">{{ $b->nama_barang }}</option>
+										@endif
 										@endforeach
 									</select>
 								</div>
 
 								<div id="detail_barang"></div>
 
+								<input type="hidden" name="id_user">
+
 								<div class="form-group">
 									<label>Jumlah Barang</label>
 									<div class="input-group mb-3">
-										<input type="number" class="form-control" placeholder="Jumlah Barang ..." name="jml_barang_keluar" required>
+										<input type="number" class="form-control" placeholder="Jumlah Barang ..."
+											name="jml_barang_keluar" required>
 										<div class="input-group-append">
-											<span class="input-group-text" id="basic-addon2">Unit</span>
+											<select name="s_stok" id="" class="input-group-text">
+												@foreach ($barang as $data)
+												<option name="s_stok" value="{{ $data->s_stok }}">{{ $data->s_stok }}
+												</option>
+												@endforeach
+											</select>
 										</div>
 									</div>
 								</div>
@@ -100,14 +111,14 @@
 	});
 </script>
 <script type="text/javascript">
-	$("#id_barang").change(function() {
+	$("#id_barang").change(function () {
 		var id_barang = $("#id_barang").val();
 		$.ajax({
 			type: "GET",
 			url: "/brg_keluar/ajax",
 			data: "id_barang=" + id_barang,
 			cache: false,
-			success: function(data) {
+			success: function (data) {
 				$('#detail_barang').html(data);
 			}
 		});
