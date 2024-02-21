@@ -65,7 +65,13 @@
 													<td>{{$no++}}</td>
 													<td>{{$data->name}}</td>
 													<td>{{$data->email}}</td>
-													<td>{{$data->level}}</td>
+													<td>
+														@if ($data->level == 1)
+														<div class="badge badge-success">Admin</div>
+														@elseif ($data->level == 2)
+														<div class="badge badge-primary">Manager</div>
+														@endif
+													</td>
 													<td>
 														<a href="#modalEditUser{{ $data->id }}" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
 														<a href="#modalHapusUser{{ $data->id }}" data-toggle="modal" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>
@@ -114,8 +120,7 @@
                             <select class="form-control" name="level">
                                 <option value="" hidden="">--Pilih Level--</option>
                                 <option value="1">Admin</option>
-                                <option value="2">Inventaris</option>
-                                <option value="3">Teknisi</option>
+                                <option value="2">Manager</option>
                             </select>
                         </div>
 					</div>
@@ -167,10 +172,6 @@
                                 selected
                                 @endif
                                 >Inventaris</option>
-                            <option value="2" holder @if($d->level == 3)
-                                selected
-                                @endif
-                                >Teknisi</option>
                         	</select>
 						</div>
 					</div>
@@ -194,11 +195,11 @@
 									<span aria-hidden="true">&times;</span>
 							</button>
 					</div>
-                    <form method="GET" enctype="multipart/form-data" action="/user/{{ $d->id }}/destroy">
+                    <form method="GET" enctype="multipart/form-data" action="/user/{{ $g->id }}/destroy">
                         @csrf
                     <div class="modal-body">
 
-                    <input type="hidden" value="{{ $d->id }}" name="id" required>
+                    <input type="hidden" value="{{ $g->id }}" name="id" required>
                         <div class="form-group">
                            <h4>Apakah Anda Ingin Menghapus Data Ini ?</h4>
                         </div>

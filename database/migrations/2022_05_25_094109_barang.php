@@ -15,10 +15,13 @@ class Barang extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_barang');
+            $table->string('id_barang');
             $table->string('nama_barang')->nullable();
             $table->string('deskripsi')->nullable();
+            $table->integer('satuan')->nullable();
+            $table->string('s_satuan')->nullable();
             $table->integer('stok')->nullable();
+            $table->string('s_stok')->nullable();
             $table->timestamps();
         });
     }

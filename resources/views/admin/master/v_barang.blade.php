@@ -66,8 +66,8 @@
 											<td>{{$no++}}</td>
 											<td>{{$data->nama_barang}}</td>
 											<td>{{$data->deskripsi}}</td>
-											<td>{{$data->stok}} Unit </td>
-											<td>{{$data->satuan}}</td>
+											<td>{{$data->stok}} {{$data->s_stok}}</td>
+											<td>{{$data->satuan}} {{$data->s_satuan}}</td>
 											<td>
 												<a href="#modalEditBarang{{ $data->id }}" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
 												<a href="#modalHapusBarang{{ $data->id }}" data-toggle="modal" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>
@@ -100,6 +100,10 @@
 				@csrf
 				<div class="modal-body">
 					<div class="form-group">
+						<label>Kode Barang</label>
+						<input type="text" class="form-control" placeholder="Kode Barang  ..." readonly="" value="{{ 'NB-'.$kd }}" name="id_barang" required>
+					</div>
+					<div class="form-group">
 						<label>Nama Barang</label>
 						<input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang ..." required>
 					</div>
@@ -112,14 +116,17 @@
 						<div class="input-group mb-3">
 							<input type="number" class="form-control" placeholder="Stok" name="stok">
 							<div class="input-group-append">
-								<span class="input-group-text" id="basic-addon2">Unit</span>
+								<input type="text" class="input-group-text" id="basic-addon2" name="s_stok" required>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label>Satuan</label>
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Meter" name="satuan">
+							<input type="number" class="form-control" placeholder="satuan" name="satuan">
+							<div class="input-group-append">
+								<input type="text" class="input-group-text" id="basic-addon2" name="s_satuan" required>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -148,19 +155,13 @@
 
 					<input type="hidden" value="{{ $d->id }}" name="id" required>
 					<div class="form-group">
+						<label>Kode Barang</label>
+						<input type="text" value="{{ $d->id_barang }}" class="form-control" name="id_barang" placeholder="Kode Barang ..." readonly required>
+					</div>
+					<div class="form-group">
 						<label>Nama Barang</label>
 						<input type="text" value="{{ $d->nama_barang }}" class="form-control" name="nama_barang" placeholder="Nama Barang ..." required>
 					</div>
-					<!-- <div class="form-group">
-						<label>Kategori</label>
-						<select name="nama_kategori" class="form-control @error('nama_kategori') is-invalid @enderror" value="{{ $d->nama_kategori }}" id="choices-jeniskelamin">
-							<option value="{{ $d->nama_kategori }}">{{ $d->nama_kategori }}</option>
-							<option value="TIPE A">TIPE A</option>
-							<option value="TIPE B">TIPE B</option>
-							<option value="TIPE C">TIPE C</option>
-							<option value="TIPE D">TIPE D</option>
-						</select>
-					</div> -->
 					<div class="form-group">
 						<label>Deskripsi</label>
 						<input type="text" value="{{ $d->deskripsi }}" class="form-control" name="deskripsi" placeholder="Deskripsi ..." required>
@@ -169,15 +170,18 @@
 						<label>Stok</label>
 						<div class="input-group mb-3">
 							<input type="number" class="form-control" placeholder="Stok" value="{{ $d->stok }}" name="stok" required>
-							<div class="input-group-append">
-								<span class="input-group-text" id="basic-addon2">Unit</span>
+							<div class="group-append">
+								<input type="text" class="input-group-text" id="basic-addon2" name="s_stok" value="{{ $d->s_stok }}"  required>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label>Satuan</label>
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Meter" value="{{ $d->satuan }}" name="satuan" required>
+							<input type="number" class="form-control" placeholder="Meter" value="{{ $d->satuan }}" name="satuan" required>
+							<div class="group-append">
+								<input type="text" class="input-group-text" id="basic-addon2" name="s_satuan" value="{{ $d->s_satuan }}"  required>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -201,11 +205,11 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="GET" enctype="multipart/form-data" action="/barang/{{ $d->id }}/destroy">
+			<form method="GET" enctype="multipart/form-data" action="/barang/{{ $g->id }}/destroy">
 				@csrf
 				<div class="modal-body">
 
-					<input type="hidden" value="{{ $d->id }}" name="id" required>
+					<input type="hidden" value="{{ $g->id }}" name="id" required>
 					<div class="form-group">
 						<h4>Apakah Anda Ingin Menghapus Data Ini ?</h4>
 					</div>
