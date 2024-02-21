@@ -81,14 +81,14 @@
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
 								aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="/assets/img/itn2.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<li>
 									<div class="user-box">
-										<div class="avatar-lg"><img src="../../assets/img/profile.jpg"
-												alt="image profile" class="avatar-img rounded"></div>
+										<div class="avatar-lg"><img src="../../assets/img/itn2.jpg" alt="image profile"
+												class="avatar-img rounded"></div>
 										<div class="u-text">
 											<h4>{{Auth::user()->name }}</h4>
 											<p class="text-muted">{{Auth::user()->email }}</p><a href="profile.html"
@@ -123,7 +123,7 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="/assets/img/itn2.jpg" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
